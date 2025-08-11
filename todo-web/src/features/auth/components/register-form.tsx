@@ -26,13 +26,13 @@ export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
       {({ register, formState }) => (
         <>
           <Input
-            label="Email"
+            label={t("auth.email")}
             type="email"
             registration={register("email")}
             error={formState.errors.email}
           />
           <Input
-            label="Password"
+            label={t("auth.password")}
             type="password"
             registration={register("password")}
             error={formState.errors.password}

@@ -4,6 +4,7 @@ import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { ReactNode } from "react";
 
 import { paths } from "@/config/paths";
+import { useTranslations } from "next-intl";
 
 type LayoutProps = {
   children: ReactNode;
@@ -13,9 +14,8 @@ export const AuthLayout = ({ children }: LayoutProps) => {
   // const router = useRouter();
   const pathname = usePathname();
   const isLoginPage = pathname === paths.auth.login.getHref();
-  const title = isLoginPage
-    ? "Log in to your account"
-    : "Register your account";
+  const title = isLoginPage ? "login" : "register";
+  const t = useTranslations();
 
   // const searchParams = useSearchParams();
   // const redirectTo = searchParams?.get("redirectTo");
@@ -30,7 +30,7 @@ export const AuthLayout = ({ children }: LayoutProps) => {
           id="auth-page-title"
           className="mt-3 text-center text-3xl font-extrabold text-gray-900"
         >
-          {title}
+          {t(`auth.${title}`)}
         </h2>
       </div>
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
